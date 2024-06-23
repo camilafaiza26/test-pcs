@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react';
-import { View, StyleSheet, ScrollView } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+import React, {useEffect} from 'react';
+import {View, StyleSheet, ScrollView} from 'react-native';
+import {useNavigation} from '@react-navigation/native';
 import CustomText from '../../components/CustomText';
 import Notification from '../../components/Notification';
 import dataNotifications from '../../data/notification';
@@ -24,7 +24,7 @@ const Notifications = () => {
   return (
     <ScrollView>
       <View>
-        {dataNotifications.map((notification) => (
+        {dataNotifications.map(notification => (
           <Notification
             key={notification.id}
             title={notification.title}

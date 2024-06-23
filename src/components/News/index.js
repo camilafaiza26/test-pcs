@@ -1,8 +1,8 @@
 import React from 'react';
-import { StyleSheet, Image, View } from 'react-native';
+import {StyleSheet, Image, View} from 'react-native';
 import CustomText from '../CustomText';
 
-const News = ({ photoProfile, name, day, date, text, id }) => {
+const News = ({photoProfile, name, day, date, text, id}) => {
   return (
     <View className="bg-white border border-gray-200 py-4 px-4 rounded-2xl shadow">
       <View className="flex-row mb-2">
@@ -13,8 +13,7 @@ const News = ({ photoProfile, name, day, date, text, id }) => {
           <View className="flex flex-row justify-between items-center">
             <CustomText
               style={styles.semiBold}
-              className="text-sm text-red-500"
-            >
+              className="text-sm text-red-500">
               {name}
             </CustomText>
             <View className="flex flex-col items-end">
@@ -27,7 +26,7 @@ const News = ({ photoProfile, name, day, date, text, id }) => {
       <View className="mt-1">
         {text &&
           text.map((textNews, index) => (
-            <CustomText key={index}  className="text-xs text-gray-800">
+            <CustomText key={index} className="text-xs text-gray-800">
               {textNews}
             </CustomText>
           ))}
@@ -44,13 +43,13 @@ const styles = StyleSheet.create({
   },
 
   shadow: {
-    shadowColor: "#171717",
+    shadowColor: '#171717',
     shadowOffset: {
-        width: 0,
-        height: 1,
+      width: 0,
+      height: 1,
     },
     shadowOpacity: 0.2,
     shadowRadius: 4.65,
     elevation: 3,
-},
+  },
 });

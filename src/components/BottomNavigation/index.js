@@ -1,8 +1,8 @@
 import React from 'react';
-import { View } from 'react-native';
+import {View} from 'react-native';
 import TabItem from '../TabItem';
 
-const BottomNavigation = ({ state, descriptors, navigation }) => {
+const BottomNavigation = ({state, descriptors, navigation}) => {
   const focusedOptions = descriptors[state.routes[state.index].key].options;
 
   if (focusedOptions.tabBarVisible === false) {
@@ -12,7 +12,7 @@ const BottomNavigation = ({ state, descriptors, navigation }) => {
   return (
     <View className="flex-row bg-white justify-between px-6 py-4">
       {state.routes.map((route, index) => {
-        const { options } = descriptors[route.key];
+        const {options} = descriptors[route.key];
         const label =
           options.tabBarLabel !== undefined
             ? options.tabBarLabel

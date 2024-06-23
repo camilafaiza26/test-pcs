@@ -1,15 +1,21 @@
-import React, { useEffect, useState } from 'react';
-import { TouchableOpacity, View, Image, StyleSheet, Dimensions  } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+import React, {useEffect, useState} from 'react';
+import {
+  TouchableOpacity,
+  View,
+  Image,
+  StyleSheet,
+  Dimensions,
+} from 'react-native';
+import {useNavigation} from '@react-navigation/native';
 import LinearGradient from 'react-native-linear-gradient';
-import { IconNotif, IconClock1, IconClock2, IconClock3 } from '../../assets';
-import { News, CustomText } from '../../components';
+import {IconNotif, IconClock1, IconClock2, IconClock3} from '../../assets';
+import {News, CustomText} from '../../components';
 import profiles from '../../data/profile-images.js';
 import news from '../../data/news.js';
-import { ScrollView } from 'react-native-gesture-handler';
-import Carousel, { Pagination } from 'react-native-snap-carousel';
+import {ScrollView} from 'react-native-gesture-handler';
+import Carousel, {Pagination} from 'react-native-snap-carousel';
 
-const NotificationIcon = ({ onPress }) => {
+const NotificationIcon = ({onPress}) => {
   return (
     <TouchableOpacity onPress={onPress} className="mr-4">
       <IconNotif width={24} height={24} />
@@ -17,22 +23,22 @@ const NotificationIcon = ({ onPress }) => {
   );
 };
 
-const NewsCarousel = ({ news }) => {
+
+const NewsCarousel = ({news}) => {
   const [activeSlide, setActiveSlide] = useState(1);
-  const { width: screenWidth } = Dimensions.get('window');
+  const {width: screenWidth} = Dimensions.get('window');
 
   const renderPagination = () => (
     <Pagination
       dotsLength={news.length}
-      
       activeDotIndex={activeSlide}
-      containerStyle={{ paddingVertical: 10 }}
+      containerStyle={{paddingVertical: 10}}
       dotStyle={{
         width: 15,
         height: 15,
         borderRadius: 50,
         backgroundColor: 'red',
-        marginTop:10
+        marginTop: 10,
       }}
       inactiveDotStyle={{
         backgroundColor: 'rgba(0, 0, 0, 0.26)',
@@ -42,8 +48,8 @@ const NewsCarousel = ({ news }) => {
     />
   );
 
-  const renderItem = ({ item }) => (
-    <View style={{ flex: 1 }}>
+  const renderItem = ({item}) => (
+    <View className="flex-1">
       <News
         key={item.id}
         photoProfile={item.photoProfile}
@@ -61,8 +67,8 @@ const NewsCarousel = ({ news }) => {
         data={news}
         renderItem={renderItem}
         sliderWidth={screenWidth}
-        itemWidth={screenWidth - 60} 
-        onSnapToItem={(index) => setActiveSlide(index)}
+        itemWidth={screenWidth - 60}
+        onSnapToItem={index => setActiveSlide(index)}
         activeDotIndex={2}
       />
       {renderPagination()}
@@ -81,11 +87,11 @@ const Home = () => {
         </CustomText>
       ),
       headerStyle: {
-        backgroundColor: 'white',     
+        backgroundColor: 'white',
         elevation: 0,
-        height:80,
+        height: 80,
         shadowOpacity: 0,
-      },    
+      },
       headerRight: () => (
         <NotificationIcon
           onPress={() => {
@@ -106,13 +112,11 @@ const Home = () => {
           Hi, Good Morning!
         </CustomText>
         <LinearGradient
-         
           colors={['#EF2724', '#D71A46', '#C40F61']}
           locations={[0, 0.43, 0.79]}
-          start={{ x: 0, y: 0 }}
-          end={{ x: 1, y: 0 }}
-          className="p-5 rounded-2xl justify-center mt-2 mx-6"
-        >
+          start={{x: 0, y: 0}}
+          end={{x: 1, y: 0}}
+          className="p-5 rounded-2xl justify-center mt-2 mx-6">
           <View className="flex-row items-center">
             <Image
               source={require('../../assets/images/profile.jpg')}
@@ -122,14 +126,12 @@ const Home = () => {
               <View className="flex-row justify-between items-center">
                 <CustomText
                   style={styles.bold}
-                  className="text-white text-base"
-                >
+                  className="text-white text-base">
                   Tabay
                 </CustomText>
                 <CustomText
                   style={styles.italic}
-                  className="text-white text-xs text-gray-200"
-                >
+                  className="text-white text-xs text-gray-200">
                   Member Since
                 </CustomText>
               </View>
@@ -152,16 +154,14 @@ const Home = () => {
             </CustomText>
             <CustomText
               style={styles.italic}
-              className="text-white text-xs text-gray-200"
-            >
+              className="text-white text-xs text-gray-200">
               ICO
             </CustomText>
           </View>
         </LinearGradient>
         <CustomText
           style={styles.bold}
-          className="text-gray-800 mt-5 ml-1 mx-6 "
-        >
+          className="text-gray-800 mt-5 ml-1 mx-6 ">
           Today's activity
         </CustomText>
         <View className="flex-row justify-between mt-4 mx-6">
@@ -169,8 +169,7 @@ const Home = () => {
             <IconClock1 width={40} height={40} />
             <CustomText
               style={styles.bold}
-              className="text-base mt-2 text-black"
-            >
+              className="text-base mt-2 text-black">
               8:30
             </CustomText>
             <CustomText className="text-xs">Check In</CustomText>
@@ -179,8 +178,7 @@ const Home = () => {
             <IconClock2 width={32} height={32} />
             <CustomText
               style={styles.bold}
-              className="text-lg text-red-500 mt-2"
-            >
+              className="text-lg text-red-500 mt-2">
               03:00:00
             </CustomText>
             <CustomText className="text-xs mt-1">Working Hours</CustomText>
@@ -195,39 +193,34 @@ const Home = () => {
         </View>
         <CustomText
           style={styles.bold}
-          className="text-gray-800 mt-8 mb-2 ml-1 mx-6"
-        >
+          className="text-gray-800 mt-8 mb-2 ml-1 mx-6">
           PCS News
         </CustomText>
-        <NewsCarousel news={news}/>
-        <CustomText
-          style={styles.bold}
-          className="text-gray-800 ml-1 mx-6"
-        >
+        <NewsCarousel news={news} />
+        <CustomText style={styles.bold} className="text-gray-800 ml-1 mx-6">
           Online
         </CustomText>
-        <View style={styles.shadow} className="flex-row flex-wrap bg-white  mb-3 justify-center px-2 py-4 rounded-2xl mt-2 mx-6">
+        <View
+          style={styles.shadow}
+          className="flex-row flex-wrap bg-white  mb-3 justify-center px-2 py-4 rounded-2xl mt-2 mx-6">
           <View className="flex-row flex-wrap items-center">
             {profiles.map((profile, index) => (
               <View
                 key={profile.id}
-                className={`flex items-center ${index !== 0 ? '-ml-4' : ''}`}
-              >
+                className={`flex items-center ${index !== 0 ? '-ml-4' : ''}`}>
                 <Image
-                 source={profile.image}               
+                  source={profile.image}
                   style={styles.online.profileImage}
                   className="w-12 h-12 rounded-full"
                 />
                 <CustomText
                   style={styles.online.textName}
-                  className="text-center mt-1 text-black"
-                >
+                  className="text-center mt-1 text-black">
                   {profile.name}
                 </CustomText>
                 <CustomText
                   style={styles.online.textLocation}
-                  className="text-center"
-                >
+                  className="text-center">
                   {profile.location}
                 </CustomText>
               </View>
@@ -236,14 +229,12 @@ const Home = () => {
               <LinearGradient
                 colors={['#EF2724', '#D71A46', '#C40F61']}
                 locations={[0, 0.43, 0.79]}
-                start={{ x: 0, y: 0 }}
-                end={{ x: 1, y: 0 }}
-                className="w-12 h-12 rounded-full flex items-center justify-center border-2 border-white"
-              >
+                start={{x: 0, y: 0}}
+                end={{x: 1, y: 0}}
+                className="w-12 h-12 rounded-full flex items-center justify-center border-2 border-white">
                 <CustomText
                   style={styles.online.textMore}
-                  className="text-center text-xs text-white "
-                >
+                  className="text-center text-xs text-white ">
                   10 more
                 </CustomText>
               </LinearGradient>
@@ -271,17 +262,17 @@ const styles = StyleSheet.create({
   },
   italic: {
     fontFamily: 'Poppins-MediumItalic',
-  }, 
+  },
   shadow: {
-    shadowColor: "#171717",
+    shadowColor: '#171717',
     shadowOffset: {
-        width: 0,
-        height: 1,
+      width: 0,
+      height: 1,
     },
     shadowOpacity: 0.2,
     shadowRadius: 4.65,
     elevation: 3,
-},
+  },
   online: {
     textName: {
       fontSize: 9,
@@ -297,6 +288,5 @@ const styles = StyleSheet.create({
     textLocation: {
       fontSize: 8,
     },
-   
   },
 });

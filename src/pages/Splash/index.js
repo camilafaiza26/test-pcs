@@ -1,8 +1,8 @@
-import React, { useEffect } from 'react';
-import { ImageBackground, Image } from 'react-native';
-import { Logo } from '../../assets';
+import React, {useEffect} from 'react';
+import {ImageBackground, Image} from 'react-native';
+import {Logo} from '../../assets';
 
-const Splash = ({ navigation }) => {
+const Splash = ({navigation}) => {
   useEffect(() => {
     setTimeout(() => {
       navigation.replace('MainApp');
